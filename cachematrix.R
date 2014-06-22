@@ -1,15 +1,27 @@
-## Put comments here that give an overall description of what your
-## functions do
+##makeCacheMatrix: turns input into square matrix. caches the 
+##inverse then returns the square matrix
+makeCacheMatrix<-function(M) {
+        elements_in_M<-length(M)
+        nrow<-sqrt(elements_in_M)
+        ncol<-nrow
+        matricize<-matrix(M,nrow,ncol)
+        x.inv<-solve(matricize)
+        cache<<-x.inv
+matricize
+                                }
 
-## Write a short comment describing this function
+##cacheSolve: takes the output of makeCacheMatrix, retrieves 
+##inverse from cache
 
-makeCacheMatrix <- function(x = matrix()) {
+cacheSolve<-function(M){
+        specialM<-makeCacheMatrix(M)
+        specialM.inv<-solve(specialM)
+        if (all.equal(specialM.inv,cache)) 
+{cache}                 
+                        }
 
-}
+##Note to editor (I'd appreciate if you could comment on below!)
 
-
-## Write a short comment describing this function
-
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
-}
+##Things I didn't understand about this assignment:
+##1)makeCacheMatrix: what is the special matrix?
+##2)cacheSolve: how could the matrix have changed? 
